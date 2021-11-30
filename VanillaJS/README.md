@@ -6,14 +6,17 @@
 
 - Building a REST API
 - MVC Architecture Pattern
-- Understanding what express does
+- Understanding what express and middleware do
+- Created a middleware like bodyParser (super simple)
 - Become acquainted with req and res and a little of http, fs.
+- Reviewed regrex and some javascript concepts
 
 ### **I used the following while creating this project**
 
-- Testing API Endpoints (Postman)
+- Postman for testing API endpoints
 - RESTful API guidelines
 - HTTP (GET, POST, PUT, PATCH, DELETE, status codes)
+
 
 ### **Application Architecture**
 
@@ -28,7 +31,8 @@ URI                     Verb        Operation   Success         Failure
 /api/products           POST        Create      201 Created     405 Not Allowed
 /api/products/:sku      GET         Read        200 OK          404 Not Found
 /api/products/:sku      PUT         Update      
-/api/products/:sku      DELETE      Delete      
+/api/products/:sku      DELETE      Delete  
+/api/products/:sku      PATCH       Update
 ```
 
 ### **Usage**

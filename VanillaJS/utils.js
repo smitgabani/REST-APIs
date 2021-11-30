@@ -3,7 +3,7 @@ const fs = require('fs');
 const { resolve } = require('path');
 
 // strictly const as due to hoisting in other module the value may get changed
-const debugCode = false;
+const debugCode = true;
 
 function writeDataToFile(filename, content) {
     fs.writeFileSync(filename, JSON.stringify(content), 'utf8', (err) => {
