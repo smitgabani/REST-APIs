@@ -4,8 +4,11 @@ const { debugCode, writeDataToFile } = require("../utils");
 
 function createUser(name) {
   return new Promise((resolve, reject) => {
-    users.push(name);    
-    writeDataToFile("./data/users.json", users);
+    const user = users.find((i) => i==name);
+    if (!user) {
+      users.push(name);
+      writeDataToFile("./data/users.json", users);
+    }
   });
 }
 
@@ -20,6 +23,14 @@ function findBySKU(sku) {
   if (debugCode) console.log("model: findBySKU req.params.sku = " + sku);
   return new Promise((resolve, reject) => {
     const product = products.find((p) => p.sku == sku);
+    resolve(product);
+  });
+}
+
+function findProductByName(name) {
+  if (debugCode) console.log("model: findProductByName req.query.name = " + name);
+  return new Promise((resolve, reject) => {
+    const product = products.find((p) => p.name == name);
     resolve(product);
   });
 }
@@ -41,4 +52,5 @@ module.exports = {
   findAll,
   findBySKU,
   create,
+  findProductByName
 };

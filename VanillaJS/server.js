@@ -4,6 +4,7 @@ const {
   getProducts,
   getProduct,
   welcome,
+  getProductbyName
 } = require("./controllers/productController");
 const { debugCode } = require("./utils");
 
@@ -18,14 +19,13 @@ const server = http.createServer((req, res) => {
         goto: `http://localhost:${PORT}/api/products`,
       })
     );
-  } else if (req.url.match(/\/api\/products\?name=\w+/)) {
+  } else if (req.url.match(/\/api\/products\?username=\w+/)) {
     let use = req.url.split("/")[2];
     use = use.split("?")[1];
     let name = use.split("=")[1];
     if (debugCode) {
       console.log("server: req.query.name: " + name);
     }
-
     welcome(req, res, name);
   } else if (req.url === "/api/products" && req.method === "GET") {
     if (debugCode) {
@@ -38,6 +38,14 @@ const server = http.createServer((req, res) => {
     }
     const sku = req.url.split("/")[3];
     getProduct(req, res, sku);
+  } else if (req.url.match(/\/api\/products\?name=\w+/)) {
+    let use = req.url.split("/")[2];
+    use = use.split("?")[1];
+    let name = use.split("=")[1];
+    if (debugCode) {
+      console.log("server: req.query.name: " + name);
+    }
+    getProductbyName(req, res, name);
   } else if (req.url === "/api/products" && req.method === "POST") {
     if (debugCode) {
       console.log("server: POST /api/products");

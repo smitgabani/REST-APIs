@@ -1,6 +1,6 @@
 # **Restful API with vanilaJS**
 
-**Project does not have a link**
+**This project does not have a link**
 
 ## **The purpose of this project is to learn and practice concepts related to:**
 
@@ -25,19 +25,21 @@
 
 ### **API Endpoints**
 ```
-URI                     Verb        Operation   Success         Failure
--------------------------------------------------------------------------------
-/api/products           GET         Read        200 OK          404 Not Found
-/api/products           POST        Create      201 Created     405 Not Allowed
-/api/products/:sku      GET         Read        200 OK          404 Not Found
-/api/products/:sku      PUT         Update      
-/api/products/:sku      DELETE      Delete  
-/api/products/:sku      PATCH       Update
+URI                         Verb        Operation   Success         Failure
+----------------------------------------------------------------------------------
+/api/products               GET         Read        200 OK          404 Not Found
+/api/products               POST        Create      201 Created     405 Not Allowed
+/api/products/:sku          GET         Read        200 OK          404 Not Found
+/api/products?name=name     GET         Read        200 OK          404 Not Found
+/api/products/:sku          PUT         Update
+/api/products/:sku          DELETE      Delete
+/api/products/:sku          PATCH       Update
 ```
 
 ### **Usage**
 ```
-cd VanillaJS
+git clone https://github.com/smitgabani/REST-APIs.git
+cd .\VanillaJS\
 # Install dependencies
 npm install
 
@@ -47,5 +49,5 @@ npm run dev
 # Run in production
 npm start
 ```
-
+Use Postman for testing API endpoints.
 ### **Link used**

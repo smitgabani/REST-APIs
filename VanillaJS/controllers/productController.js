@@ -3,7 +3,6 @@ const { debugCode, writeDataToFile, getPostData } = require("../utils");
 
 // @desc    Welcomes a user
 // @route   GET /api/products?username=name
-
 async function welcome(req, res, name) {
   const works = Product.createUser(name);
   res.writeHead(200, { "Content-Type": "application/json" });
@@ -33,6 +32,30 @@ async function getProduct(req, res, sku) {
     const product = await Product.findBySKU(sku);
 
     if (!product) {
+      if (debugCode)
+        console.log("controller: getProduct : Not found");
+      res.writeHead(404, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ message: "Product not found" }));
+    } else {
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify(product));
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// @desc    Gets a single product by name
+// @route   GET /api/products?name=name
+async function getProductbyName(req, res, name) {
+  try {
+    if (debugCode)
+      console.log("controller: getProductbyName req.query.sku = " + name);
+    const product = await Product.findProductByName(name);
+
+    if (!product) {
+      if (debugCode)
+        console.log("controller: getProduct : Not found");
       res.writeHead(404, { "Content-Type": "application/json" });
       res.end(JSON.stringify({ message: "Product not found" }));
     } else {
@@ -67,4 +90,5 @@ module.exports = {
   getProduct,
   getProducts,
   createProduct,
+  getProductbyName,
 };
