@@ -1,1 +1,4 @@
 /VanillaJS/node_modules 
+/MongoTypescript/node_modules
+/ExpressPostgreSQL/node_modules
+/MongoTypescript/config/default.ts
